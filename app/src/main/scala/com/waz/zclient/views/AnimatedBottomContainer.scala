@@ -35,11 +35,11 @@ class AnimatedBottomContainer(context: Context, attrs: AttributeSet, style: Int)
   def openAnimated(): Unit = {
     setTranslationY(ViewUtils.toPx(getContext, 160))
     animate.translationY(0).setDuration(150).setInterpolator(new Expo.EaseOut).withStartAction(new Runnable() {
-      def run() {
+      def run(): Unit = {
         setVisibility(View.VISIBLE)
       }
     }).withEndAction(new Runnable() {
-      def run() {
+      def run(): Unit = {
         isExpanded ! true
       }
     })
@@ -48,7 +48,7 @@ class AnimatedBottomContainer(context: Context, attrs: AttributeSet, style: Int)
   def closedAnimated(): Unit = {
     setTranslationY(0)
     animate.translationY(ViewUtils.toPx(getContext, 160)).setDuration(150).setInterpolator(new Expo.EaseOut).withEndAction(new Runnable() {
-      def run() {
+      def run(): Unit = {
         setVisibility(View.GONE)
         isExpanded ! false
       }

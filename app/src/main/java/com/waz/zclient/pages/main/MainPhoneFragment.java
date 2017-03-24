@@ -50,10 +50,10 @@ import com.waz.zclient.conversation.CollectionFragment;
 import com.waz.zclient.conversation.ShareToMultipleFragment;
 import com.waz.zclient.core.stores.inappnotification.InAppNotificationStoreObserver;
 import com.waz.zclient.core.stores.inappnotification.KnockingEvent;
+import com.waz.zclient.fragments.ImageFragment;
 import com.waz.zclient.pages.BaseFragment;
 import com.waz.zclient.pages.main.backgroundmain.views.BackgroundFrameLayout;
 import com.waz.zclient.pages.main.conversation.SingleImageFragment;
-import com.waz.zclient.pages.main.conversation.SingleImageMessageFragment;
 import com.waz.zclient.pages.main.conversation.SingleImageUserFragment;
 import com.waz.zclient.pages.main.conversation.VideoPlayerFragment;
 import com.waz.zclient.pages.main.conversationlist.ConfirmationFragment;
@@ -194,6 +194,12 @@ public class MainPhoneFragment extends BaseFragment<MainPhoneFragment.Container>
                 return  ((CollectionFragment) topFragment).onBackPressed();
             } else if (topFragment instanceof ConfirmationFragment) {
                 return ((ConfirmationFragment) topFragment).onBackPressed();
+            } else if (topFragment instanceof ImageFragment) {
+                if (!((ImageFragment) topFragment).onBackPressed()) {
+                    getChildFragmentManager().popBackStackImmediate(ImageFragment.TAG(),
+                        FragmentManager.POP_BACK_STACK_INCLUSIVE);
+                }
+                return true;
             }
 
         }
@@ -286,9 +292,9 @@ public class MainPhoneFragment extends BaseFragment<MainPhoneFragment.Container>
     public void onShowSingleImage(Message message) {
         getChildFragmentManager().beginTransaction()
                                  .add(R.id.fl__overlay_container,
-                                      SingleImageMessageFragment.newInstance(message),
-                                      SingleImageMessageFragment.TAG)
-                                 .addToBackStack(SingleImageMessageFragment.TAG)
+                                     ImageFragment.newInstance(message.getId()),
+                                     ImageFragment.TAG())
+                                 .addToBackStack(ImageFragment.TAG())
                                  .commit();
         getControllerFactory().getNavigationController().setRightPage(Page.SINGLE_MESSAGE, TAG);
     }

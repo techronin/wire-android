@@ -34,22 +34,6 @@
         android:alpha="@dimen/framework__zero__alpha"
         />
 
-    <com.waz.zclient.pages.main.conversation.views.image.ImageDragViewContainer
-        android:id="@+id/dvc__single_image_message__drag_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-        <com.waz.zclient.views.images.TouchImageView
-            android:id="@+id/tiv__single_image_message__image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:visibility="invisible"
-            />
-
-    </com.waz.zclient.pages.main.conversation.views.image.ImageDragViewContainer>
-
     <com.waz.zclient.views.images.TouchImageView
         android:id="@+id/tiv__single_image_message__animating_image"
         android:layout_width="wrap_content"
@@ -86,5 +70,21 @@
             android:paddingBottom="@dimen/single_image_message__icon__padding__bottom"
             />
     </RelativeLayout>
+
+    <com.waz.zclient.pages.main.conversation.views.image.ImageDragViewContainer
+        android:id="@+id/dvc__single_image_message__drag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <com.waz.zclient.views.images.TouchImageView
+            android:id="@+id/tiv__single_image_message__image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            />
+
+    </com.waz.zclient.pages.main.conversation.views.image.ImageDragViewContainer>
 
 </FrameLayout>
